@@ -1,0 +1,21 @@
+- name: "Build a container with ansible"
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: stop current running container
+      command: docker stop go_app
+      ignore_errors: yes
+
+    - name: remove stopped container
+      command: docker rm go_app
+      ignore_errors: yes
+
+    - name: remove multistage_go image
+      command: docker rmi multistage_go
+      ignore_errors: yes
+
+    - name: build docker image using the Dockerfile
+      command: docker build -t multistage_go .
+
+    - name: run container
+      command: docker run -d --name go_app -p 8080:8080 multistage_go
