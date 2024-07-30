@@ -14,14 +14,14 @@ multistage_go   latest    da38f02272c5   About an hour ago   12.6MB
 ## To run a container based on created images use below commands
 ```bash
 docker run -d --name app1 -p 8080:8080 go_app
-docker run -d --name app2 -p 8085:8080 go_app
+docker run -d --name app2 -p 8085:8080 multistage_go
 ```
 ## Running Containers
 ```bash
 $ docker ps
-CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS          PORTS                                       NAMES
-6cc932755fcc   go_app    "/app/main"   25 seconds ago   Up 24 seconds   0.0.0.0:8085->8080/tcp, :::8085->8080/tcp   app2
-d90ffcc13e39   go_app    "/app/main"   42 seconds ago   Up 40 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   app1
+CONTAINER ID   IMAGE           COMMAND       CREATED          STATUS          PORTS                                     NAMES
+6cc932755fcc  multistage_go   "/app/main"   25 seconds ago   Up 24 seconds   0.0.0.0:8085->8080/tcp, :::8085->8080/tcp   app2
+d90ffcc13e39   go_app         "/app/main"   42 seconds ago   Up 40 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   app1
 ```
 ## To access containers
   In the browser's address bar, enter `http://localhost:8080` & `http://localhost:8085` and press Enter.
