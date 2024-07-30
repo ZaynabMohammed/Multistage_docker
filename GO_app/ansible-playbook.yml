@@ -15,7 +15,7 @@
       ignore_errors: yes
 
     - name: build docker image using the Dockerfile
-      command: docker build -t multistage_go .
+      command: docker build -t multistage_go -f Dockerfile_multistage .
 
     - name: run container
       command: docker run -d --name go_app -p 8080:8080 multistage_go
